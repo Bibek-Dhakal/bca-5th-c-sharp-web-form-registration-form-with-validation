@@ -118,25 +118,22 @@
             </asp:RangeValidator>
         </div>
         <div>
-            <asp:Button ID="btnSubmit" runat="server" Text="Submit" />
+            <asp:Button
+                ID="btnSubmit"
+                runat="server"
+                Text="Submit"
+                />
             <asp:Label ID="lblMessage" runat="server"></asp:Label>
         </div>
     </form>
-<script runat="server">
-    protected new void Page_Load(object sender, EventArgs e)
-    {
-        btnSubmit.Click += btnSubmit_Click;
-    }
-
-    protected void btnSubmit_Click(object sender, EventArgs e)
-    {
-        if (Page.IsValid)
-        {
-            Response.Write("<script>" +
-                           "alert('Form submitted successfully.')" +
-                           "</script>");
-        }
-    }
-</script>
+    <script>
+        const submitButton = document.getElementById('<%= btnSubmit.ClientID %>');
+        const lblMessage = document.getElementById('<%= lblMessage.ClientID %>');
+       
+        submitButton.addEventListener('click', function (event) {
+            const isValid = Page_ClientValidate();
+            lblMessage.textContent = isValid ? 'Form submitted successfully!' : 'Form contains errors!';
+        });
+    </script>
 </body>
 </html>
