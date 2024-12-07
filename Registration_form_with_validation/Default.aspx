@@ -119,6 +119,7 @@
         </div>
         <div>
             <asp:Button ID="btnSubmit" runat="server" Text="Submit" />
+            <asp:Label ID="lblMessage" runat="server"></asp:Label>
         </div>
     </form>
 <script runat="server">
@@ -131,9 +132,11 @@
     {
         if (Page.IsValid)
         {
-            // display success message
-            Response.Write("Congrats! Validation passed.");
+            lblMessage.Text = "Registration successful!";
+            return;
         }
+        
+        lblMessage.Text = "Please correct the errors.";
     }
 </script>
 </body>
