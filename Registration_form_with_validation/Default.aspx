@@ -132,11 +132,10 @@
     {
         if (Page.IsValid)
         {
-            lblMessage.Text = "Registration successful!";
-            return;
+            Response.Write("<script>" +
+                           "alert('Form submitted successfully.')" +
+                           "</script>");
         }
-        
-        lblMessage.Text = "Please correct the errors.";
     }
 </script>
 </body>
